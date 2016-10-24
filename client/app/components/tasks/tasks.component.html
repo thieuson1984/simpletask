@@ -1,0 +1,21 @@
+<form (submit)="addTask($event)">
+   
+        <md-input [(ngModel)]="title" name="title" placeholder="Add your task" style="width: 100%"></md-input>
+    
+</form>
+<md-card class="task-card">
+    <md-list>
+        <md-list-item *ngFor="let task of tasks">
+            <div class="col-md-10 col-xs-10">
+                <md-slide-toggle color="primary" [checked]="task.isDone" (click)="updateStatus(task)">
+                    <span [ngClass]="task.isDone ? 'task-complete-text' : 'task-normal-text'">{{task.title}}</span>
+                </md-slide-toggle>
+            </div>
+            <div class="col-md-2 col-xs-2 task-button">
+                <button md-icon-button color="accent" (click)="deleteTask(task._id)">
+                    <md-icon>delete</md-icon>
+                </button>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-card>
